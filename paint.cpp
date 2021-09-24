@@ -52,21 +52,21 @@ int main()
     cout.tie(0);
     freopen("paint.in", "r", stdin);
     freopen("paint.out", "w", stdout);
-    int n, m, k, t, x, y;
-    /*
-    cin >> t;
-    while (t--)
+    int a, b, c, d, ans = 0;
+    cin >> a >> b >> c >> d;
+    int m = min(a, c);
+    int mm = max(b, d);
+    rep(i, m, mm + 1)
     {
-        cin >> n;
-        vi a;
-        int temp;
-        rep(i, 0, n)
+        if (i >= a && i < b)
         {
-            cin >> temp;
-            a.pb(temp);
+            ans++;
+        }
+        else if (i >= c && i < d)
+        {
+            ans++;
         }
     }
-    */
-
+    cout << ans;
     return 0;
 }

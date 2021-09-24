@@ -45,28 +45,30 @@ string converter(T n)
 adnaneaabbar
 */
 
+struct billboard
+{
+    int x1, y1, x2, y2;
+};
+
 int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    freopen("paint.in", "r", stdin);
-    freopen("paint.out", "w", stdout);
-    int n, m, k, t, x, y;
-    /*
-    cin >> t;
-    while (t--)
-    {
-        cin >> n;
-        vi a;
-        int temp;
-        rep(i, 0, n)
-        {
-            cin >> temp;
-            a.pb(temp);
-        }
-    }
-    */
-
+    freopen("billboard.in", "r", stdin);
+    freopen("billboard.out", "w", stdout);
+    billboard x, y, truck;
+    cin >> x.x1 >> x.y1 >> x.x2 >> x.y2;
+    cin >> y.x1 >> y.y1 >> y.x2 >> y.y2;
+    cin >> truck.x1 >> truck.y1 >> truck.x2 >> truck.y2;
+    int areaX = (x.x2 - x.x1) * (x.y2 - x.y1);
+    int areaY = (y.x2 - y.x1) * (y.y2 - y.y1);
+    int intersectXx = max(0, min(x.x2, truck.x2) - max(x.x1, truck.x1));
+    int intersectYx = max(0, min(x.y2, truck.y2) - max(x.y1, truck.y1));
+    int intersectXy = max(0, min(y.x2, truck.x2) - max(y.x1, truck.x1));
+    int intersectYy = max(0, min(y.y2, truck.y2) - max(y.y1, truck.y1));
+    int intersectx = intersectXx * intersectYx;
+    int intersecty = intersectXy * intersectYy;
+    cout << areaX + areaY - intersectx - intersecty;
     return 0;
 }
