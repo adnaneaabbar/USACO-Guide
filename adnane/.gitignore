@@ -4,5 +4,5 @@
 *.txt
 *.in
 *.out
+../venv
 .cph
-venv
