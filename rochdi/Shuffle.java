@@ -65,48 +65,36 @@ class Kattio extends PrintWriter {
 
 }
 
-public class LostCow {
+public class Shuffle {
+    public static List<Integer> permute(List<Integer> shuffleID, List<Integer> shufflePosition) {
+        List<Integer> newSuffleID = new ArrayList<Integer>();
+        for (int i = 0; i < shufflePosition.size(); i++) {
+            newSuffleID.add(shuffleID.get(shufflePosition.get(i)));
+        }
+        return newSuffleID;
+    }
+
     public static void main(String[] args) throws Exception {
         Kattio io;
         try {
-            io = new Kattio("lostcow");
-            int x = io.nextInt();
-            int y = io.nextInt();
-            // int k = 0;
-            // int d = 0;
-            // int prev = x;
-            // Using boucle
-            // while (((y >= x && y > (x + Math.pow((-2), k))) || (y < x && y < (x +
-            // Math.pow((-2), k))))
-            // && (x + Math.pow((-2), k) >= 0)) {
-            // d += Math.abs((x + Math.pow((-2), k)) - prev);
-
-            // prev = x + (int) Math.pow((-2), k);
-            // k++;
-            // }
-            // d += Math.abs((x + Math.pow((-2), k)) - prev);
-            // if (x > y) {
-            // d -= y - x - Math.pow((-2), k);
-            // } else {
-            // d -= x - y + Math.pow((-2), k);
-            // }
-            // Using Math
-            int d = Math.abs(x - y);
-            int n = (int) Math.ceil(Math.log(d) / Math.log(2)); // C vrai dans tout les cas
-
-            if (x > y) {
-                // n doit etre impair
-                if (n % 2 == 0) {
-                    n += 1;
-                }
+            io = new Kattio("shuffle");
+            int N = io.nextInt();
+            List<Integer> shufflePosition = new ArrayList<Integer>();
+            List<Integer> shuffleID = new ArrayList<Integer>();
+            for (int i = 0; i < N; i++) {
+                shufflePosition.add(io.nextInt() - 1);
             }
-            if (x <= y) {
-                // n doit etre pair
-                n += n % 2;
+            for (int i = 0; i < N; i++) {
+                shuffleID.add(io.nextInt());
             }
-            // serie geometriq
-            io.print(((int) (3 * (Math.pow(2, n) - 1) + 1 - (Math.abs(y - x - Math.pow(-2, n))))));
-            // io.print(d);
+            int t = 0;
+            while (t < 3) {
+                shuffleID = permute(shuffleID, shufflePosition);
+                t++;
+            }
+            for (int i = 0; i < shuffleID.size(); i++) {
+                io.println(shuffleID.get(i));
+            }
             io.close();
         } catch (Exception e) {
             System.out.print("Please fill input file ");
