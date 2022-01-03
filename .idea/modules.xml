@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/USACO-Guide.iml" filepath="$PROJECT_DIR$/.idea/USACO-Guide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_submissions/adnane_java_submissions.iml" filepath="$PROJECT_DIR$/java_submissions/adnane_java_submissions.iml" />
     </modules>
   </component>
 </project>
